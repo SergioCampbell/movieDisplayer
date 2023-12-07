@@ -1,0 +1,18 @@
+<div>
+  <input type="search" placeholder="Search" [(ngModel)]="movieName" />
+</div>
+<article
+  class="movie-card"
+  *ngFor="let movie of movies | FilterPipe : movieName"
+>
+  <h3>
+    <a
+      [title]="movie.Title + ' details'"
+      [routerLink]="['/movies', movie.id]"
+      >{{ movie.Title }}</a
+    >
+  </h3>
+  <p>{{ movie.Description }}</p>
+  <p>{{ movie.ReleasedDate | date }}</p>
+  <p *ngIf="movie.id === -1">No movies found 😥</p>
+</article>
