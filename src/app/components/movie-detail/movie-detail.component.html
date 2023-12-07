@@ -1,0 +1,43 @@
+<section class="row lign-items-center" *ngIf="movie">
+  <div class="col-xs-12 col-md-6 col-lg-6">
+    <h2 class="display-3">{{ movie.Title }}</h2>
+    <!-- <img [src]="movie.imageUrl" alt="{{ movie.title }}" /> -->
+    <p>{{ movie.Description }}</p>
+    <p>Rating: {{ movie.Rating | starRating }}</p>
+    <!-- <p>Rating: {{ movie.Rating }}</p> -->
+    <p>Duration: {{ movie.Duration }}</p>
+    <p>Genre: {{ movie.Genre }}</p>
+    <p>Released date: {{ movie.ReleasedDate | date }}</p>
+    <div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="!isOnWatchlist"
+        (click)="addMovieToWatchList(movie)"
+      >
+        Add to Watchlist
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        *ngIf="isOnWatchlist"
+        (click)="removeMovieFromWatchList(movie.Title)"
+      >
+        Remove from Watchlist
+      </button>
+      <span
+        class="mx-3 badge rounded-pill text-bg-success"
+        *ngIf="isOnWatchlist"
+        >On my watchlist</span
+      >
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6 col-lg-6 mt-3 position-relative">
+    <iframe
+      class="center"
+      height="500px"
+      [src]="getSafeTrailerUrl(movie.TrailerLink)"
+    ></iframe>
+  </div>
+</section>
+<div *ngIf="!movie">No movie details found or deleted 🤔</div>

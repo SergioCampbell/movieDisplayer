@@ -9,7 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddToWatchListComponent } from './components/add-to-watch-list/add-to-watch-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MovieThumbnailComponent } from './components/movie-thumbnail/movie-thumbnail.component';
-import { FilterPipe } from './filter.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { StarRatingPipe } from './pipes/stars.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,10 @@ import { FilterPipe } from './filter.pipe';
     UserComponent,
     AddToWatchListComponent,
     HeaderComponent,
+    FooterComponent,
     MovieThumbnailComponent,
     FilterPipe,
+    StarRatingPipe,
   ],
   imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule, FormsModule],
   providers: [],

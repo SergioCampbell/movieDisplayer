@@ -9,45 +9,12 @@ import { WatchlistService } from 'src/app/services/watchlist.service';
 
 @Component({
   selector: 'app-movie-detail',
-  template: `
-    <h1>Movie Detail</h1>
-    <div class="movie-details" *ngIf="movie">
-      <h2>{{ movie.Title }}</h2>
-      <!-- <img [src]="movie.imageUrl" alt="{{ movie.title }}" /> -->
-      <p>{{ movie.Description }}</p>
-      <p>Rating: {{ movie.Rating }}</p>
-      <p>Duration: {{ movie.Duration }}</p>
-      <p>Genre: {{ movie.Genre }}</p>
-      <p>Released date: {{ movie.ReleasedDate | date }}</p>
-      <section>
-        <button *ngIf="!isOnWatchlist" (click)="addMovieToWatchList(movie)">
-          Add to Watchlist
-        </button>
-        <button
-          *ngIf="isOnWatchlist"
-          (click)="removeMovieFromWatchList(movie.Title)"
-        >
-          Remove from Watchlist
-        </button>
-        <span class="on-watchlist" *ngIf="isOnWatchlist">On my watchlist</span>
-      </section>
-      <div class="video-container">
-        <iframe
-          width="560"
-          height="315"
-          [src]="getSafeTrailerUrl(movie.TrailerLink)"
-          frameborder="0"
-        ></iframe>
-      </div>
-    </div>
-    <div *ngIf="!movie">No movie details found or deleted 🤔</div>
-  `,
+  templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css'],
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie | undefined;
   isOnWatchlist = false;
-  currentMovie: Movie = {} as Movie;
 
   findMovie = (movieName: string): void => {
     const foundMovie = this.localStorageService.getMovieByName(movieName);
@@ -95,7 +62,17 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getSafeTrailerUrl(trailerLink: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(trailerLink);
+    const url =
+      'https://www.youtube.com/embed/' + this.getYoutubeVideoId(trailerLink);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  getYoutubeVideoId(url: string): string {
+    const regExp =
+      /^(?:(?:(?:https?:)?\/\/)?(?:www\.)?)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regExp);
+
+    return match?.[1] || '';
   }
 
   toggleWatchlist() {

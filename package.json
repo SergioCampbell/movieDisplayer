@@ -1,6 +1,8 @@
 {
-  "name": "my-app",
+  "name": "movie-dispayer",
   "version": "0.0.0",
+  "author": "Sergio Campbell Dev",
+  "homepage": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

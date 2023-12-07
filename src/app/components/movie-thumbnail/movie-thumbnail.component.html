@@ -1,18 +1,42 @@
-<div>
-  <input type="search" placeholder="Search" [(ngModel)]="movieName" />
+<div class="container my-3">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-6 text-center">
+      <label for="exampleDataList" class="form-label"
+        >Search a movie here 🔍</label
+      >
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-6">
+      <input
+        class="form-control mb-3"
+        list="datalistOptions"
+        id="exampleDataList"
+        placeholder="Type to search a movie..."
+        [(ngModel)]="movieName"
+      />
+      <datalist id="datalistOptions">
+        <option value="Spider-Man"></option>
+        <option value="Avengers"></option>
+        <option value="IT"></option>
+      </datalist>
+    </div>
+  </div>
 </div>
 <article
-  class="movie-card"
+  class="shadow-sm p-3 mb-5 bg-dark-subtle text-body rounded"
   *ngFor="let movie of movies | FilterPipe : movieName"
 >
   <h3>
     <a
       [title]="movie.Title + ' details'"
       [routerLink]="['/movies', movie.id]"
+      class=""
       >{{ movie.Title }}</a
     >
   </h3>
-  <p>{{ movie.Description }}</p>
-  <p>{{ movie.ReleasedDate | date }}</p>
+
+  <blockquote class="blockquote">
+    <p>{{ movie.Description }}</p>
+    <time class="">{{ movie.ReleasedDate | date }}</time>
+  </blockquote>
   <p *ngIf="movie.id === -1">No movies found 😥</p>
 </article>
