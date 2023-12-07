@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "movie-displayer": {
+      "hosting": {
+        "my-app": [
+          "movie-displayer"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "movie-displayer"
+  }
+}

@@ -1,27 +1,52 @@
-# MyApp
+# Movie Watchlist Web App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
+This Angular project is a web application designed for movie enthusiasts to explore and manage their movie preferences. The application provides features for finding movies, adding them to a watchlist, and viewing detailed information about each movie.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Movie Search and Filtering:**
+   - Users can search for movies by title.
+   - The application offers a custom pipe for filtering movies by title and release date.
 
-## Code scaffolding
+2. **Movie Details:**
+   - Clicking on a movie thumbnail navigates users to a detailed view.
+   - The detailed view showcases information such as title, description, rating, duration, genre, and release date.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. **Watchlist Management:**
+   - Users can add movies to their watchlist.
+   - The watchlist is stored in the local storage, providing a persistent user experience.
 
-## Build
+4. **Star Rating System:**
+   - A custom pipe converts numerical movie ratings into a visual star rating.
+   - For example, a rating of 3.5 will be displayed as ⭐⭐⭐½.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Custom Pipes
 
-## Running unit tests
+1. **FilterPipe:**
+   - Enables users to search for movies by title or release date.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **StarRatingPipe:**
+   - Transforms numerical ratings into a visual star rating for a more engaging user interface.
 
-## Running end-to-end tests
+## How to Use
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Search for Movies:**
+   - Use the search bar to find movies by title.
 
-## Further help
+2. **Explore Movie Details:**
+   - Click on a movie thumbnail to view detailed information.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. **Manage Watchlist:**
+   - Add movies to the watchlist for future reference.
+   - Remove movies from the watchlist as preferences change.
+
+4. **Visual Ratings:**
+   - Ratings are visually represented using star icons for a quick and intuitive understanding.
+
+## Additional Notes
+
+- The project incorporates Angular best practices for project structure and component architecture.
+- Custom pipes enhance user interactions by providing efficient search and visually appealing ratings.
+- The watchlist functionality ensures that users can save and revisit their favorite movies.
+
+Feel free to explore, discover new movies, and curate your personal watchlist with this Movie Watchlist Web App!
